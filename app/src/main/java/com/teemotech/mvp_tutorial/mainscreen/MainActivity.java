@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.teemotech.mvp_tutorial.ApplicationEntry;
 import com.teemotech.mvp_tutorial.R;
+import com.teemotech.mvp_tutorial.mainscreen.component.DaggerMainActivityComponent;
 import com.teemotech.mvp_tutorial.mainscreen.model.RandomUser;
+import com.teemotech.mvp_tutorial.mainscreen.module.MainActivityModule;
 
 public class MainActivity extends AppCompatActivity implements MainScreenViewInterface {
 
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindViews();
+        injectMainActivityComponent();
 
         MainScreenModel model = new MainScreenModel();
         presenter = new MainScreenPresenter(model, this);
@@ -32,6 +36,15 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
         randomUserImage = findViewById(R.id.randomUserImage);
         randomUserFullName = findViewById(R.id.randomUserName);
         randomUserEmail = findViewById(R.id.randomUserEmail);
+    }
+
+    private void injectMainActivityComponent(){
+        DaggerMainActivityComponent
+                .builder()
+                .appComponent(((ApplicationEntry)getApplicationContext()).getAppComponent())
+                .mainActivityModule(new MainActivityModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override
