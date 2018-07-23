@@ -6,6 +6,8 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.teemotech.mvp_tutorial.utils.VolleySingleton;
 
+import javax.inject.Inject;
+
 public class MainScreenModel implements MainScreenModelInterface {
 
     @Override

@@ -1,5 +1,6 @@
 package com.teemotech.mvp_tutorial.mainscreen;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import com.teemotech.mvp_tutorial.ApplicationEntry;
 import com.teemotech.mvp_tutorial.R;
 import com.teemotech.mvp_tutorial.mainscreen.component.DaggerMainActivityComponent;
 import com.teemotech.mvp_tutorial.mainscreen.model.RandomUser;
+import com.teemotech.mvp_tutorial.mainscreen.module.ContextModule;
 import com.teemotech.mvp_tutorial.mainscreen.module.MainActivityModule;
 
 import javax.inject.Inject;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
         bindViews();
         injectMainActivityComponent();
 
-        presenter.getRandomUser(this);
+        presenter.getRandomUser();
     }
 
     private void bindViews(){
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
                 .builder()
                 .appComponent(((ApplicationEntry)getApplicationContext()).getAppComponent())
                 .mainActivityModule(new MainActivityModule(this))
+                .contextModule(new ContextModule(this))
                 .build()
                 .inject(this);
     }

@@ -1,6 +1,5 @@
 package com.teemotech.mvp_tutorial.mainscreen.module;
 
-import com.teemotech.mvp_tutorial.mainscreen.MainActivity;
 import com.teemotech.mvp_tutorial.mainscreen.MainScreenModel;
 import com.teemotech.mvp_tutorial.mainscreen.MainScreenModelInterface;
 import com.teemotech.mvp_tutorial.mainscreen.MainScreenViewInterface;
@@ -12,7 +11,7 @@ import dagger.Provides;
 @Module
 public class MainActivityModule {
 
-    MainScreenViewInterface view;
+    private MainScreenViewInterface view;
 
     public MainActivityModule(MainScreenViewInterface view) {
         this.view = view;

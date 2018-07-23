@@ -1,6 +1,7 @@
 package com.teemotech.mvp_tutorial.data.component;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.teemotech.mvp_tutorial.ApplicationEntry;
 import com.teemotech.mvp_tutorial.data.module.AppModule;

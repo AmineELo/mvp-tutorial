@@ -1,5 +1,6 @@
 package com.teemotech.mvp_tutorial.mainscreen;
 
+
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -20,6 +21,7 @@ public class MainScreenPresenter implements MainScreenPresenterInterface {
     private MainScreenViewInterface view;
 
     private final String URL = "https://randomuser.me/api/";
+    @Inject Context context;
 
     @Inject
     public MainScreenPresenter(MainScreenModelInterface model, MainScreenViewInterface view) {
@@ -28,7 +30,7 @@ public class MainScreenPresenter implements MainScreenPresenterInterface {
     }
 
     @Override
-    public void getRandomUser(Context context) {
+    public void getRandomUser() {
         Response.Listener listener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -42,7 +44,7 @@ public class MainScreenPresenter implements MainScreenPresenterInterface {
 
             }
         };
-        model.performRequest(Request.Method.GET, URL, listener, errorListener, context);
+        model.performRequest(Request.Method.GET, URL, listener, errorListener, this.context);
     }
 
     private RandomUser randomUserData(String response){
