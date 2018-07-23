@@ -12,24 +12,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javax.inject.Inject;
+
 public class MainScreenPresenter implements MainScreenPresenterInterface {
 
     private MainScreenModelInterface model;
     private MainScreenViewInterface view;
-    private Context context;
 
     private final String URL = "https://randomuser.me/api/";
 
-    public MainScreenPresenter(MainScreenModelInterface model, Context context) {
+    @Inject
+    public MainScreenPresenter(MainScreenModelInterface model, MainScreenViewInterface view) {
         this.model = model;
-        this.context = context;
+        this.view = view;
     }
 
-
-
-
     @Override
-    public void getRandomUser() {
+    public void getRandomUser(Context context) {
         Response.Listener listener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -44,16 +43,6 @@ public class MainScreenPresenter implements MainScreenPresenterInterface {
             }
         };
         model.performRequest(Request.Method.GET, URL, listener, errorListener, context);
-    }
-
-    @Override
-    public void bindView(MainScreenViewInterface view) {
-        this.view = view;
-    }
-
-    @Override
-    public void unbindView() {
-        this.view = null;
     }
 
     private RandomUser randomUserData(String response){

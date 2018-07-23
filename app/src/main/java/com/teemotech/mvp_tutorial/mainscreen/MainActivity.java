@@ -12,11 +12,13 @@ import com.teemotech.mvp_tutorial.mainscreen.component.DaggerMainActivityCompone
 import com.teemotech.mvp_tutorial.mainscreen.model.RandomUser;
 import com.teemotech.mvp_tutorial.mainscreen.module.MainActivityModule;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity implements MainScreenViewInterface {
 
     private ImageView randomUserImage;
     private TextView randomUserFullName, randomUserEmail;
-    private MainScreenPresenter presenter;
+    @Inject MainScreenPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
         bindViews();
         injectMainActivityComponent();
 
-        MainScreenModel model = new MainScreenModel();
-        presenter = new MainScreenPresenter(model, this);
-        presenter.bindView(this);
-
-        presenter.getRandomUser();
+        presenter.getRandomUser(this);
     }
 
     private void bindViews(){
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
 
     @Override
     protected void onDestroy() {
-        presenter.unbindView();
         super.onDestroy();
     }
 
