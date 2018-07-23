@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.teemotech.mvp_tutorial.mainscreen.model.RandomUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.teemotech.mvp_tutorial.R;
+import com.teemotech.mvp_tutorial.mainscreen.model.RandomUser;
 
 public class MainActivity extends AppCompatActivity implements MainScreenViewInterface {
 

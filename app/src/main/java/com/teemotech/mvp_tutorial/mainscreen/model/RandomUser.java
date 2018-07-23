@@ -1,4 +1,4 @@
-package com.teemotech.mvp_tutorial.mainscreen;
+package com.teemotech.mvp_tutorial.mainscreen.model;
 
 public class RandomUser {
 
