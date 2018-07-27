@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mvp-tutorial</string>
+    <string name="refresh_menu_title">refresh</string>
 </resources>
