@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements MainScreenViewInt
         super.onDestroy();
     }
 
+
+
     @Override
     public void updateView(RandomUser randomUser) {
         Picasso.get().load(randomUser.getImageUrl()).into(randomUserImage);
